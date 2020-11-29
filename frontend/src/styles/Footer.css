@@ -1,0 +1,9 @@
+.footer-bar > h5 {
+    color: white;
+    align-self: center;
+}
+
+.footer-links > i {
+    align-self: center;
+    color: orangered;
+}
