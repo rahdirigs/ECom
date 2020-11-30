@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import products from '../products';
+import axios from 'axios';
 
 const ProductScreen = ({ match }) => {
-    const product = products.find((p) => p._id === match.params.id);
+    const [product, setProduct] = useState({});
 
-    const getPrice = (price) => {
-        var x = price;
-        x = x.toString();
-        var end = x.substring(x.length - 3);
-        var start = x.substring(0, x.length - 3);
-        if (start !== ' ') end = ',' + end;
-        var ret = start.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + end;
-        return ret;
-    };
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(
+                `/api/products/${match.params.id}`
+            );
+            setProduct(data);
+        };
+
+        fetchProduct();
+    }, [match]);
 
     return (
         <>
@@ -39,7 +40,7 @@ const ProductScreen = ({ match }) => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h5>Price</h5>
-                            ₹. {getPrice(product.price)}
+                            ₹. {product.price}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h5>About the Product</h5>
@@ -54,9 +55,7 @@ const ProductScreen = ({ match }) => {
                                 <Row>
                                     <Col>Price:</Col>
                                     <Col>
-                                        <strong>
-                                            ₹. {getPrice(product.price)}
-                                        </strong>
+                                        <strong>₹. {product.price}</strong>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>

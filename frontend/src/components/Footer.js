@@ -26,14 +26,14 @@ const Footer = () => {
                                 href='https://www.instagram.com/rahdirigs'
                                 target='_blank'
                             >
-                                <i class='fab fa-instagram fa-3x'></i>
+                                <i className='fab fa-instagram fa-3x'></i>
                             </Nav.Link>
                             <Nav.Link
                                 className='footer-links'
                                 href='https://www.github.com/rahdirigs'
                                 target='_blank'
                             >
-                                <i class='fab fa-github fa-3x'></i>
+                                <i className='fab fa-github fa-3x'></i>
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

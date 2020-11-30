@@ -6,16 +6,6 @@ import { Link } from 'react-router-dom';
 const Product = (props) => {
     const { product } = props;
 
-    const getPrice = (price) => {
-        var x = price;
-        x = x.toString();
-        var end = x.substring(x.length - 3);
-        var start = x.substring(0, x.length - 3);
-        if (start !== ' ') end = ',' + end;
-        var ret = start.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + end;
-        return ret;
-    };
-
     return (
         <Card className='my-2 p-2 rounded'>
             <Link to={`/product/${product._id}`}>
@@ -36,7 +26,7 @@ const Product = (props) => {
                     />
                 </Card.Text>
 
-                <Card.Text as='h4'>₹. {getPrice(product.price)}</Card.Text>
+                <Card.Text as='h4'>₹. {product.price}</Card.Text>
             </Card.Body>
         </Card>
     );
