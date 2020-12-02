@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from 'mongoose';
+import mongoose from 'mongoose';
 
 const addressSchema = mongoose.Schema({
     line_one: {
@@ -61,6 +61,7 @@ const orderSchema = mongoose.Schema(
             required: true,
             default: false,
         },
+        deliveredOn: Date,
     },
     {
         timestamps: true,
