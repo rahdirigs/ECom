@@ -4,19 +4,19 @@ import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import axios from 'axios';
 
-const ProductScreen = ({ passed }) => {
+const ProductScreen = ({ match }) => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
         const fetchProduct = async () => {
             const { data } = await axios.get(
-                `/api/products/${passed.params.id}`
+                `/api/products/${match.params.id}`
             );
             setProduct(data);
         };
 
         fetchProduct();
-    }, [passed]);
+    }, [match]);
 
     return (
         <>

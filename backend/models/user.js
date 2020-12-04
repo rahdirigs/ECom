@@ -38,7 +38,6 @@ const userSchema = mongoose.Schema(
         contact: {
             type: String,
             required: true,
-            unique: true,
         },
         isAdmin: {
             type: Boolean,
@@ -46,6 +45,11 @@ const userSchema = mongoose.Schema(
             default: false,
         },
         addresses: [addressSchema],
+        isPremium: {
+            type: Boolean,
+            required: true,
+            default: false,
+        },
     },
     {
         timestamps: true,
