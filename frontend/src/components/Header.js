@@ -20,7 +20,8 @@ const Header = () => {
                                 alt='Logo'
                                 width='30'
                                 height='30'
-                                className='d-inline-block align-top'
+                                className='d-inline-block align-centre'
+                                style={{ marginRight: '0.5rem' }}
                             />{' '}
                             Just Buy
                         </Navbar.Brand>

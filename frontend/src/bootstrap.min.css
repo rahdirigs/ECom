@@ -11,6 +11,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 @import url(https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Overlock:wght@700&display=swap);
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -38,7 +40,7 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: 'Nunito Sans', -apple-system, BlinkMacSystemFont,
+    --font-family-sans-serif: 'Titillium Web', -apple-system, BlinkMacSystemFont,
         'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
@@ -69,7 +71,7 @@ section {
 }
 body {
     margin: 0;
-    font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 0.875rem;
@@ -3954,7 +3956,7 @@ input[type='submit'].btn-block {
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
 }
 .navbar .container,
 .navbar .container-fluid,
@@ -3972,11 +3974,12 @@ input[type='submit'].btn-block {
     justify-content: space-between;
 }
 .navbar-brand {
+    font-family: Overlock, cursive;
     display: inline-block;
-    padding-top: 0.335938rem;
-    padding-bottom: 0.335938rem;
+    /*padding-top: 0.335938rem;
+    padding-bottom: 0.335938rem;*/
     margin-right: 1rem;
-    font-size: 1.09375rem;
+    font-size: 2rem;
     line-height: inherit;
     white-space: nowrap;
 }
@@ -5458,7 +5461,7 @@ a.close.disabled {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
     font-style: normal;
@@ -5567,7 +5570,7 @@ a.close.disabled {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI',
         Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol';
     font-style: normal;

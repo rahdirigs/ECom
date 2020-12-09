@@ -14,8 +14,17 @@ const Footer = () => {
             >
                 <Container>
                     <Navbar.Brand>
-                        Just Buy &copy; 2020,
-                        <small> All rights reserved.</small>
+                        Just Buy
+                        <sup>&copy;</sup>
+                        <small
+                            style={{
+                                fontSize: '1rem',
+                                fontFamily: 'Titillium Web',
+                            }}
+                        >
+                            {' '}
+                            2020, All rights reserved.
+                        </small>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
