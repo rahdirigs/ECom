@@ -1,24 +1,5 @@
 import mongoose from 'mongoose';
-
-const addressSchema = mongoose.Schema({
-    line_one: {
-        type: String,
-        required: true,
-    },
-    line_two: String,
-    city: {
-        type: String,
-        required: true,
-    },
-    state: {
-        type: String,
-        required: true,
-    },
-    pincode: {
-        type: String,
-        required: true,
-    },
-});
+import bcrypt from 'bcryptjs';
 
 const userSchema = mongoose.Schema(
     {
@@ -44,7 +25,27 @@ const userSchema = mongoose.Schema(
             required: true,
             default: false,
         },
-        addresses: [addressSchema],
+        addresses: [
+            {
+                line_one: {
+                    type: String,
+                    required: true,
+                },
+                line_two: String,
+                city: {
+                    type: String,
+                    required: true,
+                },
+                state: {
+                    type: String,
+                    required: true,
+                },
+                pincode: {
+                    type: String,
+                    required: true,
+                },
+            },
+        ],
         isPremium: {
             type: Boolean,
             required: true,
@@ -55,6 +56,18 @@ const userSchema = mongoose.Schema(
         timestamps: true,
     }
 );
+
+userSchema.methods.matchPassword = async function (inputPassword) {
+    return await bcrypt.compare(inputPassword, this.password);
+};
+
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+});
 
 const User = mongoose.model('User', userSchema);
 
