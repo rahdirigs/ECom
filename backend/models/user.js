@@ -25,27 +25,6 @@ const userSchema = mongoose.Schema(
             required: true,
             default: false,
         },
-        addresses: [
-            {
-                line_one: {
-                    type: String,
-                    required: true,
-                },
-                line_two: String,
-                city: {
-                    type: String,
-                    required: true,
-                },
-                state: {
-                    type: String,
-                    required: true,
-                },
-                pincode: {
-                    type: String,
-                    required: true,
-                },
-            },
-        ],
         isPremium: {
             type: Boolean,
             required: true,

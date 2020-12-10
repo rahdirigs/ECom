@@ -1,25 +1,5 @@
 import mongoose from 'mongoose';
 
-const addressSchema = mongoose.Schema({
-    line_one: {
-        type: String,
-        required: true,
-    },
-    line_two: String,
-    city: {
-        type: String,
-        required: true,
-    },
-    state: {
-        type: String,
-        required: true,
-    },
-    pincode: {
-        type: String,
-        required: true,
-    },
-});
-
 const orderSchema = mongoose.Schema(
     {
         user: {
@@ -53,8 +33,23 @@ const orderSchema = mongoose.Schema(
             },
         ],
         shippingAddress: {
-            type: addressSchema,
-            required: true,
+            line_one: {
+                type: String,
+                required: true,
+            },
+            line_two: String,
+            city: {
+                type: String,
+                required: true,
+            },
+            state: {
+                type: String,
+                required: true,
+            },
+            pincode: {
+                type: String,
+                required: true,
+            },
         },
         paymentMethod: {
             type: String,

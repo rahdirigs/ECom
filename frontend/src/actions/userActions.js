@@ -58,17 +58,9 @@ export const logout = () => (dispatch) => {
     });
 };
 
-export const register = (
-    name,
-    email,
-    password,
-    contact,
-    address_lineOne,
-    address_lineTwo,
-    city,
-    state,
-    pincode
-) => async (dispatch) => {
+export const register = (name, email, password, contact) => async (
+    dispatch
+) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST,
@@ -87,11 +79,6 @@ export const register = (
                 email,
                 password,
                 contact,
-                address_lineOne,
-                address_lineTwo,
-                city,
-                state,
-                pincode,
             },
             config
         );

@@ -13,11 +13,6 @@ const RegisterScreen = ({ location, history }) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [contact, setContact] = useState('');
-    const [addressLineOne, setAddressLineOne] = useState('');
-    const [addressLineTwo, setAddressLineTwo] = useState('');
-    const [city, setCity] = useState('');
-    const [states, setStates] = useState('');
-    const [pincode, setPincode] = useState('');
     const [message, setMessage] = useState(null);
 
     const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -39,19 +34,7 @@ const RegisterScreen = ({ location, history }) => {
         if (password !== confirmPassword) {
             setMessage("The passwords don't match!!!");
         } else {
-            dispatch(
-                register(
-                    name,
-                    email,
-                    password,
-                    contact,
-                    addressLineOne,
-                    addressLineTwo,
-                    city,
-                    states,
-                    pincode
-                )
-            );
+            dispatch(register(name, email, password, contact));
         }
     };
 
@@ -111,56 +94,6 @@ const RegisterScreen = ({ location, history }) => {
                         placeholder='Enter your Contact Number'
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
-                        style={{ border: '1px solid #878787' }}
-                    ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId='address_lineOne'>
-                    <Form.Label>Address Line 1</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter your address'
-                        value={addressLineOne}
-                        onChange={(e) => setAddressLineOne(e.target.value)}
-                        style={{ border: '1px solid #878787' }}
-                    ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId='address_lineTwo'>
-                    <Form.Label>Address Line 2</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter your address'
-                        value={addressLineTwo}
-                        onChange={(e) => setAddressLineTwo(e.target.value)}
-                        style={{ border: '1px solid #878787' }}
-                    ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId='city'>
-                    <Form.Label>City</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter your City'
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        style={{ border: '1px solid #878787' }}
-                    ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId='states'>
-                    <Form.Label>State</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter your State'
-                        value={states}
-                        onChange={(e) => setStates(e.target.value)}
-                        style={{ border: '1px solid #878787' }}
-                    ></Form.Control>
-                </Form.Group>
-                <Form.Group controlId='pincode'>
-                    <Form.Label>Pincode</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Enter your area Pincode'
-                        value={pincode}
-                        onChange={(e) => setPincode(e.target.value)}
                         style={{ border: '1px solid #878787' }}
                     ></Form.Control>
                 </Form.Group>
