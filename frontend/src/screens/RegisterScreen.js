@@ -50,6 +50,7 @@ const RegisterScreen = ({ location, history }) => {
                         type='text'
                         placeholder='Enter your Name'
                         value={name}
+                        required
                         onChange={(e) => setName(e.target.value)}
                         style={{ border: '1px solid #878787' }}
                     ></Form.Control>
@@ -60,6 +61,7 @@ const RegisterScreen = ({ location, history }) => {
                         type='email'
                         placeholder='Enter your Email'
                         value={email}
+                        required
                         onChange={(e) => setEmail(e.target.value)}
                         style={{ border: '1px solid #878787' }}
                     ></Form.Control>
@@ -69,6 +71,7 @@ const RegisterScreen = ({ location, history }) => {
                     <Form.Control
                         type='password'
                         placeholder='Enter your Password'
+                        required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         style={{ border: '1px solid #878787' }}
@@ -80,6 +83,7 @@ const RegisterScreen = ({ location, history }) => {
                         type='password'
                         placeholder='Confirm your Password'
                         value={confirmPassword}
+                        required
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         style={{ border: '1px solid #878787' }}
                     ></Form.Control>
@@ -93,6 +97,7 @@ const RegisterScreen = ({ location, history }) => {
                         type='text'
                         placeholder='Enter your Contact Number'
                         value={contact}
+                        required
                         onChange={(e) => setContact(e.target.value)}
                         style={{ border: '1px solid #878787' }}
                     ></Form.Control>

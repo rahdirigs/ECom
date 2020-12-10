@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema(
                     type: String,
                     required: true,
                 },
-                quantity: {
+                qty: {
                     type: Number,
                     required: true,
                 },
@@ -42,7 +42,7 @@ const orderSchema = mongoose.Schema(
                 type: String,
                 required: true,
             },
-            state: {
+            states: {
                 type: String,
                 required: true,
             },
@@ -61,17 +61,17 @@ const orderSchema = mongoose.Schema(
             updated: { type: String },
             email: { type: String },
         },
-        taxAmount: {
+        taxPrice: {
             type: Number,
             required: true,
             default: 0.0,
         },
-        shippingAmount: {
+        shippingPrice: {
             type: Number,
             required: true,
             default: 0.0,
         },
-        totalOrderAmount: {
+        totalPrice: {
             type: Number,
             required: true,
             default: 0.0,
