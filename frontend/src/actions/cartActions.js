@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-    CART_ADDRESS_CLEAR,
     CART_ADD_ITEM,
     CART_REM_ITEM,
     CART_SAVE_ADDRESS,

@@ -1,8 +1,16 @@
 import {
+    USER_ADMIN_FAILED,
+    USER_ADMIN_REQUEST,
+    USER_ADMIN_RESET,
+    USER_ADMIN_SUCCESS,
     USER_DETAILS_FAILED,
     USER_DETAILS_REQUEST,
     USER_DETAILS_RESET,
     USER_DETAILS_SUCCESS,
+    USER_LIST_FAILED,
+    USER_LIST_REQUEST,
+    USER_LIST_RESET,
+    USER_LIST_SUCCESS,
     USER_LOGIN_FAILED,
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
@@ -69,6 +77,38 @@ export const userUpdateReducer = (state = {}, action) => {
             return { loading: false, error: action.payload };
         case USER_UPDATE_RESET:
             return {};
+        default:
+            return state;
+    }
+};
+
+export const userListReducer = (state = { users: [] }, action) => {
+    switch (action.type) {
+        case USER_LIST_REQUEST:
+            return { loading: true };
+        case USER_LIST_SUCCESS:
+            return { loading: false, users: action.payload };
+        case USER_LIST_FAILED:
+            return { loading: false, error: action.payload };
+        case USER_LIST_RESET:
+            return { users: [] };
+
+        default:
+            return state;
+    }
+};
+
+export const userAdminReducer = (state = { user: {} }, action) => {
+    switch (action.type) {
+        case USER_ADMIN_REQUEST:
+            return { loading: true };
+        case USER_ADMIN_SUCCESS:
+            return { loading: false, success: true };
+        case USER_ADMIN_FAILED:
+            return { loading: false, error: action.payload };
+        case USER_ADMIN_RESET:
+            return { user: {} };
+
         default:
             return state;
     }
