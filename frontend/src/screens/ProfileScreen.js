@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Table } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import AlertMessage from '../components/AlertMessage';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUserDetails } from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../constants/userConsts';
+import { listOrders } from '../actions/orderActions';
 
 const ProfileScreen = ({ location, history }) => {
     const [name, setName] = useState('');
@@ -25,6 +27,9 @@ const ProfileScreen = ({ location, history }) => {
     const userUpdate = useSelector((state) => state.userUpdate);
     const { success } = userUpdate;
 
+    const orderList = useSelector((state) => state.orderList);
+    const { loading: loadingOrders, error: errorOrders, orders } = orderList;
+
     useEffect(() => {
         if (!userInfo) {
             history.push('/login');
@@ -32,6 +37,7 @@ const ProfileScreen = ({ location, history }) => {
             if (!user.name || success) {
                 dispatch({ type: USER_UPDATE_RESET });
                 dispatch(getUserDetails('profile'));
+                dispatch(listOrders());
             } else {
                 setName(user.name);
                 setEmail(user.email);
@@ -59,7 +65,7 @@ const ProfileScreen = ({ location, history }) => {
 
     return (
         <Row>
-            <Col md={4}>
+            <Col md={3}>
                 <h2>My Information</h2>
                 {error && <AlertMessage variant='danger'>{error}</AlertMessage>}
                 {loading && <Loader />}
@@ -130,8 +136,73 @@ const ProfileScreen = ({ location, history }) => {
                     </Button>
                 </Form>
             </Col>
-            <Col md={8}>
+            <Col md={9}>
                 <h2>My Orders</h2>
+                {loadingOrders ? (
+                    <Loader />
+                ) : errorOrders ? (
+                    <AlertMessage variant='danger'>{errorOrders}</AlertMessage>
+                ) : (
+                    <Table
+                        striped
+                        bordered
+                        hover
+                        responsive
+                        className='table-sm'
+                    >
+                        <thead>
+                            <tr>
+                                <th>Order Id</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Paid</th>
+                                <th>Delivered</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {orders.map((order) => (
+                                <tr key={order._id}>
+                                    <td>{order._id}</td>
+                                    <td>{order.createdAt.substring(0, 10)}</td>
+                                    <td>₹. {order.totalPrice}</td>
+                                    <td>
+                                        {order.isPaid ? (
+                                            order.paymentOn.substring(0, 10)
+                                        ) : (
+                                            <i
+                                                className='fas fa-times'
+                                                style={{ color: 'red' }}
+                                            ></i>
+                                        )}
+                                    </td>
+                                    <td>
+                                        {order.delivered ? (
+                                            order.deliveredOn.substring(0, 10)
+                                        ) : (
+                                            <i
+                                                className='fas fa-times'
+                                                style={{ color: 'red' }}
+                                            ></i>
+                                        )}
+                                    </td>
+                                    <td>
+                                        <LinkContainer
+                                            to={`/order/${order._id}`}
+                                        >
+                                            <Button
+                                                variant='primary'
+                                                className='btn-sm'
+                                            >
+                                                Details
+                                            </Button>
+                                        </LinkContainer>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                )}
             </Col>
         </Row>
     );
