@@ -24,6 +24,15 @@ const Product = (props) => {
                         rating={product.rating}
                         reviews={product.numReviews}
                     />
+                    {product.usedFor === 0 ? (
+                        <span>
+                            <strong>Unused Product</strong>
+                        </span>
+                    ) : (
+                        <span>
+                            <strong>Used For:</strong> {product.usedFor} months
+                        </span>
+                    )}
                 </Card.Text>
 
                 <Card.Text as='h4'>₹. {product.price}</Card.Text>

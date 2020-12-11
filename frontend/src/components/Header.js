@@ -46,12 +46,6 @@ const Header = () => {
                                     Premium
                                 </Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to='/sell-goods'>
-                                <Nav.Link>
-                                    <i className='fas fa-store'></i> Sell
-                                    Products
-                                </Nav.Link>
-                            </LinkContainer>
                             <LinkContainer to='/my-cart'>
                                 <Nav.Link>
                                     <i className='fas fa-shopping-cart'></i>{' '}
