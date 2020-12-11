@@ -13,7 +13,7 @@ import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConsts';
 
-const OrderScreen = ({ match }) => {
+const OrderScreen = ({ match, history }) => {
     const orderId = match.params.id;
     const dispatch = useDispatch();
 
@@ -39,6 +39,10 @@ const OrderScreen = ({ match }) => {
     }
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
+
         const addPaypalScript = async () => {
             const { data: clientId } = await axios.get('/api/config/paypal');
             const script = document.createElement('script');
@@ -199,7 +203,8 @@ const OrderScreen = ({ match }) => {
                                 </ListGroup.Item>
                             )}
                             {loadingDeliver && <Loader />}
-                            {userInfo.isAdmin &&
+                            {userInfo &&
+                                userInfo.isAdmin &&
                                 order.isPaid &&
                                 !order.delivered && (
                                     <ListGroup.Item>

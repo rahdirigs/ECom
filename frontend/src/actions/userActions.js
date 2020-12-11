@@ -24,6 +24,7 @@ import {
 import axios from 'axios';
 import {
     ORDER_DELIVER_RESET,
+    ORDER_DETAILS_RESET,
     ORDER_LIST_RESET,
     ORDER_PAY_RESET,
 } from '../constants/orderConsts';
@@ -77,6 +78,7 @@ export const logout = () => (dispatch) => {
     dispatch({ type: USER_LIST_RESET });
     dispatch({ type: ORDER_DELIVER_RESET });
     dispatch({ type: ORDER_PAY_RESET });
+    dispatch({ type: ORDER_DETAILS_RESET });
 };
 
 export const register = (name, email, password, contact) => async (
