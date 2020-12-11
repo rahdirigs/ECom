@@ -1,7 +1,6 @@
 import {
     USER_ADMIN_FAILED,
     USER_ADMIN_REQUEST,
-    USER_ADMIN_RESET,
     USER_ADMIN_SUCCESS,
     USER_DETAILS_FAILED,
     USER_DETAILS_REQUEST,
@@ -23,7 +22,11 @@ import {
     USER_UPDATE_SUCCESS,
 } from '../constants/userConsts';
 import axios from 'axios';
-import { ORDER_LIST_RESET } from '../constants/orderConsts';
+import {
+    ORDER_DELIVER_RESET,
+    ORDER_LIST_RESET,
+    ORDER_PAY_RESET,
+} from '../constants/orderConsts';
 import { CART_CLEAR } from '../constants/cartConsts';
 
 export const login = (email, password) => async (dispatch) => {
@@ -72,6 +75,8 @@ export const logout = () => (dispatch) => {
     dispatch({ type: ORDER_LIST_RESET });
     dispatch({ type: CART_CLEAR });
     dispatch({ type: USER_LIST_RESET });
+    dispatch({ type: ORDER_DELIVER_RESET });
+    dispatch({ type: ORDER_PAY_RESET });
 };
 
 export const register = (name, email, password, contact) => async (

@@ -7,9 +7,9 @@ const Product = (props) => {
     const { product } = props;
 
     return (
-        <Card className='my-2 p-2 rounded'>
+        <Card className='my-2 p-2 rounded' style={{ height: '25rem' }}>
             <Link to={`/product/${product._id}`}>
-                <Card.Img src={product.image} variant='top' />
+                <Card.Img src={product.image} variant='top' height='200rem' />
             </Link>
 
             <Card.Body>
@@ -35,7 +35,7 @@ const Product = (props) => {
                     )}
                 </Card.Text>
 
-                <Card.Text as='h4'>₹. {product.price}</Card.Text>
+                <Card.Text as='h4'>₹. {product.curPrice}</Card.Text>
             </Card.Body>
         </Card>
     );
